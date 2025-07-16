@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiIssueLineHeight.MainPage">
+    
+    <ContentPage.Resources>
+        <Style x:Key="BaseLabelStyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="OpenSansRegular" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Padding" Value="0" />
+            <!--
+            This does nothing
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            -->
+        </Style>
+        
+        <Style x:Key="LineHeight10" BasedOn="{StaticResource BaseLabelStyle}" TargetType="Label">
+            <Setter Property="LineHeight" Value="1.0" />
+            <Setter Property="BackgroundColor" Value="LightGrey" />
+        </Style>
+        
+        <Style x:Key="LineHeight15" BasedOn="{StaticResource BaseLabelStyle}" TargetType="Label">
+            <Setter Property="LineHeight" Value="1.5" />
+            <Setter Property="BackgroundColor" Value="DarkGrey" />
+        </Style>
+
+    </ContentPage.Resources>
+    
+    <VerticalStackLayout Spacing="0">
+        <BoxView BackgroundColor="Red" WidthRequest="100" HeightRequest="100" />
+        <Label Text="OpenSansRegular 15, 1.0" FontSize="15" Style="{StaticResource LineHeight10}" SizeChanged="Label_OnSizeChanged" />
+        <Label Text="OpenSansRegular 15, 1.5" FontSize="15" Style="{StaticResource LineHeight15}" SizeChanged="Label_OnSizeChanged" />
+        <Label Text="OpenSansRegular 30, 1.0" FontSize="30" Style="{StaticResource LineHeight10}" SizeChanged="Label_OnSizeChanged" />
+        <Label Text="OpenSansRegular 30, 1.5" FontSize="30" Style="{StaticResource LineHeight15}" SizeChanged="Label_OnSizeChanged" />
+        <Label Text="OpenSansRegular 15, 1.0, but it is also wrapped onto multiple lines" FontSize="15" Style="{StaticResource LineHeight10}" SizeChanged="Label_OnSizeChanged" />
+        <Label Text="OpenSansRegular 15, 1.5, but it is also wrapped onto multiple lines" FontSize="15" Style="{StaticResource LineHeight15}" SizeChanged="Label_OnSizeChanged" />
+        <Label Text="OpenSansRegular 30, 1.0, but it is also wrapped onto multiple lines" FontSize="30" Style="{StaticResource LineHeight10}" SizeChanged="Label_OnSizeChanged" />
+        <Label Text="OpenSansRegular 30, 1.5, but it is also wrapped onto multiple lines" FontSize="30" Style="{StaticResource LineHeight15}" SizeChanged="Label_OnSizeChanged" />
+       
+            
+    </VerticalStackLayout>
+
+</ContentPage>
