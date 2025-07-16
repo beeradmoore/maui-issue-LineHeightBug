@@ -31,6 +31,10 @@ public partial class MainPage : ContentPage
             "Top": 0,
             "Bottom": 0
         }
+        
+        Figma Auto  = LineHeight / FontSize = 136.18164%
+        
+        Figma Auto = top + bottom / FontSize = 132.71484267%
         {
             "FontFamily": "OpenSansRegular",
             "FontSize": 30,
@@ -52,7 +56,7 @@ public partial class MainPage : ContentPage
             "Descender": 3.6621094,
             "Leading": 0,
             "CapHeight": 0,
-            "LineHeight": 0, // 17.5781254
+            "LineHeight": 0, // top + bottom = 19.9072264
             "XHeight": 0,
             "Top": -15.842285,
             "Bottom": 4.0649414
@@ -65,7 +69,7 @@ public partial class MainPage : ContentPage
             "Descender": 7.3242188,
             "Leading": 0,
             "CapHeight": 0,
-            "LineHeight": 0,
+            "LineHeight": 0, // top + bottom = 39.814453
             "XHeight": 0,
             "Top": -31.68457,
             "Bottom": 8.129883
