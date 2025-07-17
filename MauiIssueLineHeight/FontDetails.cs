@@ -1,3 +1,6 @@
+
+using System.Diagnostics;
+
 namespace MauiIssueLineHeight;
 
 public class FontDetails
@@ -19,8 +22,8 @@ public class FontDetails
     {
         FontFamily = fontFamily;
         FontSize = fontSize;
-        
-        #if __IOS__
+
+#if __IOS__
         var fontName = fontFamily switch
         {
             "OpenSansRegular" => "OpenSans-Regular",
@@ -45,7 +48,7 @@ public class FontDetails
         LineHeight = (float)font.LineHeight;
         XHeight = (float)font.XHeight;
         
-        #elif __ANDROID__
+#elif __ANDROID__
         var typeface = Android.Graphics.Typeface.Create(fontFamily, Android.Graphics.TypefaceStyle.Normal);
         if (typeface is null)
         {
@@ -69,6 +72,38 @@ public class FontDetails
         Leading = metrics.Leading;
         Top = metrics.Top;
         Bottom = metrics.Bottom;
+#elif WINDOWS
+
+        var fontPath = fontFamily switch
+        {
+            "OpenSansRegular" => "OpenSans-Regular.ttf",
+            "OpenSansSemibold" => "OpenSans-Semibold.ttf",
+            _ => string.Empty,
+        };
+
+        try
+        {
+            var collection = new System.Drawing.Text.PrivateFontCollection();
+            collection.AddFontFile(fontPath);
+            var fontFamilyObject = collection.Families[0];
+
+            var font = new System.Drawing.Font(fontFamilyObject, fontSize);
+            if (font is null)
+            {
+                return;
+            }
+
+            // TODO: 96 DPI windows scaling for 100%?
+            // font.Height changes on what monitor I test the app on. They
+            // have different scaling set. On a monitor with 100% set it comes
+            // out as 28. DPI of 96 gives 27.2363281
+            LineHeight = font.GetHeight(96);
+        }
+        catch (Exception err)
+        {
+            Debug.WriteLine($"Could not load font {fontFamily}. {err.Message}");
+        }
+
 #endif
     }
 }
