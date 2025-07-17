@@ -74,6 +74,20 @@ public partial class MainPage : ContentPage
             "Top": -31.68457,
             "Bottom": 8.129883
         }
+        
+        MacCatalyst:
+        {
+             "FontFamily": "OpenSansRegular",
+             "FontSize": 15,
+             "Ascender": 16.032715,
+             "Descender": -4.3945312,
+             "Leading": 0,
+             "CapHeight": 10.708008,
+             "LineHeight": 20,
+             "XHeight": 8.027344,
+             "Top": 0,
+             "Bottom": 0
+           }
         */
     }
 
